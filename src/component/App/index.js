@@ -20,7 +20,7 @@ class App extends Component {
 	render() {
 		switch(this.state.page) {
 			case 'setting':
-				return <Setting setPage={this.setPage}/>
+				return <Setting users={this.state.users} setPage={this.setPage}/>
 			case 'play':
 				// state를 넘길경우
 				//return <Game jobs={this.state.jobs}/>;
