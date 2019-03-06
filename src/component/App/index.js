@@ -24,6 +24,7 @@ class App extends Component {
 			case 'play':
 				// state를 넘길경우
 				//return <Game jobs={this.state.jobs}/>;
+				break;
 			default:
 				return (
 					<>

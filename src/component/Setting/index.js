@@ -6,9 +6,8 @@ class Setting extends Component {
 	//	jobs : this.props.jobs
 	//}
 	state = {
-		userCnt : this.props.users.length,
-		users : this.props.users,
-		jobs : this.props.jobs
+		// defualt 4
+		userCnt : this.props.users.length ? this.props.users.length : 4,
 	}
 	setUserCnt = (cnt) => {
 		let resultCnt = this.state.userCnt + cnt;
@@ -18,6 +17,9 @@ class Setting extends Component {
 			})
 		}
 	}
+	testInputOnChange = (idx, name) => {
+		console.log(name);
+	}
 
 	render() {
 		return(
@@ -26,7 +28,9 @@ class Setting extends Component {
 			<span>{this.state.userCnt}</span>
 			<button onClick={() => this.setUserCnt(1)}>+</button>
 			<br/>
-			{this.setInputUsers(this.state.userCnt)}
+			{Array.from({ length: this.state.userCnt }, (v, k) => k).map((i) => (
+				<input key={i} value={this.props.users[i]} onChange={(e) => this.testInputOnChange(i, e.target.value)} />
+			))}
 			<br/>
 			<button onClick={() => this.props.setPage('main')}>뒤로</button>
 			</>
