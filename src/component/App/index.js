@@ -7,7 +7,24 @@ class App extends Component {
 	state = {
 		page : 'main',
 		users : [],
-		jobs : []
+		jobs : {
+			MAFIA : {
+				min : 1,
+				max : 1,
+			},
+			POLICE : {
+				min : 0,
+				max : 0,
+			},
+			DOCTOR : {
+				min : 0,
+				max : 0,
+			},
+			CITIZEN : {
+				min : 1,
+				max : 1,
+			}
+		}
 	}
 	setPage = (page) => {
 		//const page = this.state.page;
@@ -20,7 +37,7 @@ class App extends Component {
 	render() {
 		switch(this.state.page) {
 			case 'setting':
-				return <Setting users={this.state.users} setPage={this.setPage}/>
+				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage}/>
 			case 'play':
 				// state를 넘길경우
 				//return <Game jobs={this.state.jobs}/>;

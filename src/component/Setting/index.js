@@ -1,48 +1,32 @@
 import React, { Component } from 'react';
 
 class Setting extends Component {
-	// state를 넘겨받을경우
-	//state = {
-	//	jobs : this.props.jobs
-	//}
 	state = {
 		// defualt 4
-		userCnt : this.props.users.length ? this.props.users.length : 4,
-		users : this.props.users,
+		users : this.props.users.length ? this.props.users : ["","","",""],
 		jobs : this.props.jobs
 	}
-	setUserCnt = (cnt) => {
-		let resultCnt = this.state.userCnt + cnt;
-		if(resultCnt >= 0) {
-			this.setState({
-				userCnt : resultCnt
-			})
-		}
-	}
+	// +,- 버튼 클릭, user추가, 제거
+	addUser = () => {this.setState({users: this.state.users.concat("")})}
+	removeUser = () => {this.setState({ users: this.state.users.slice(0, -1)})}
+	// 유저 이름 입력 시
 	OnChangeUsers = (idx, name) => {
-		// TODO: users를 가져와서 변경한뒤 셋이 안됨
-		let users = []
-		if(this.state.users.length){
-			users = this.state.users.map((x,i) => idx === i ? name : x);
-		}else{
-			users = [name];
-		}
-		this.setState({
-			users : users 
-		})
+		this.setState({users: this.state.users.map((x,i) => idx === i ? name : x)})
 	}
 
 	render() {
+		console.log(this.state.jobs);
 		return(
 			<>
-			<button onClick={() => this.setUserCnt(-1)}>-</button>
-			<span>{this.state.userCnt}</span>
-			<button onClick={() => this.setUserCnt(1)}>+</button>
+			<button onClick={this.removeUser}>-</button>
+			<span>{this.state.users.length}</span>
+			<button onClick={this.addUser}>+</button>
 			<br/>
-			{Array.from({ length: this.state.userCnt }, (v, k) => k).map((i) => (
+			{Array.from({ length: this.state.users.length }, (v, k) => k).map((i) => (
 				<input key={i} value={this.state.users[i]} onChange={(e) => this.OnChangeUsers(i, e.target.value)} />
 			))}
 			<br/>
+			<br/><br/>
 			<button onClick={() => this.props.setPage('main')}>뒤로</button>
 			</>
 		);
