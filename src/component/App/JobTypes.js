@@ -5,6 +5,6 @@
 */
 
 export const MAFIA = 'MAFIA';
-export const POLICE = 'POLIC';
+export const POLICE = 'POLICE';
 export const DOCTOR = 'DOCTOR';
 export const CITIZEN = 'CITIZEN';
