@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as jobTypes from '../App/JobTypes';
+import * as jobTypes from '../App/const/JobTypes';
 
 class Setting extends Component {
 	state = {
@@ -59,6 +59,11 @@ class Setting extends Component {
 		this.setState({jobs: {...this.state.jobs, ...tmpJob}})
 	}
 
+	startGame = () => {
+		this.props.setUsersJobs(this.state.users.map((name, idx) => (!name ? "Player"+(idx+1) : name)), this.state.jobs)
+		this.props.setPage('play')
+	}
+
 	render() {
 		//const jobArr = [...Object.keys(jobTypes)];
 		const jobArr = Object.keys(jobTypes);
@@ -70,7 +75,7 @@ class Setting extends Component {
 			<br/>
 			{Array.from({ length: this.state.users.length }, (v, k) => k).map((i) => (
 				<div key={i}>
-				<input value={this.state.users[i]} onChange={(e) => this.OnChangeUsers(i, e.target.value)} />
+				<input value={this.state.users[i]} placeholder={`Player${i+1}`} onChange={(e) => this.OnChangeUsers(i, e.target.value)} />
 				</div>
 			))}
 			<br/>
@@ -88,7 +93,7 @@ class Setting extends Component {
 			))}
 			<br/><br/>
 			<button onClick={() => this.props.setPage('main')}>뒤로</button>
-			<button onClick={() => this.props.setPage('play')}>게임시작</button>
+			<button onClick={this.startGame}>게임시작</button>
 			</>
 		);
 	}

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './index.css';
 import Setting from '../Setting';
+import Game from '../Game';
+
+import {setPlayers} from './logic/setPlayers';
 
 class App extends Component {
 	state = {
@@ -34,11 +37,16 @@ class App extends Component {
 			page
 		})
 	}
+
+	// setting에서 user,jobs 설정
+	setUsersJobs = (users,jobs) => {this.setState({users, jobs})}
+
 	render() {
 		switch(this.state.page) {
 			case 'setting':
-				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage}/>
+				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage} setUsersJobs={this.setUsersJobs} />
 			case 'play':
+				return <Game />
 				// state를 넘길경우
 				//return <Game jobs={this.state.jobs}/>;
 				break;
@@ -52,5 +60,4 @@ class App extends Component {
 		}
 	}
 }
-
 export default App;
