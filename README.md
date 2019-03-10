@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 마피아게임
+## 개요  
+친구들과 마피아 게임을 하던 중에 기존 마피아 게임 어플들에 대한 불만으로 인하여 직접 만들기로 결심  
+cpp로 콘솔게임개발 완료 https://github.com/ChoiBU/MafiaGame_single_cpp
+휴대폰으로 플레이하고 싶었음  
+웹어플리케이션으로 개발 하기로 함  
+관심 있던 "리액트"를 공부하면서 개발하기로함  
+한영이와 같이 개발 함 https://github.com/JungHanYoung/MafiaGame_single_react
+많은 부분을 한영이가 개발  
+버그가 많이 발생하고 유지보수가 쉽지 않다고 판단
+새롭게 다시 개발하기로 함  
 
-## Available Scripts
+## 게임 방법  
+우리가 일반적으로 아는 마피아 게임.  
+인원과 직업을 설정하면 랜덤으로 직업이 배치됨  
+낮에는 의심가는 사람을 투표하여 처형하고  
+밤에는 각자의 직업대로 행동 할 수 있다  
 
-In the project directory, you can run:
+## 구성
+### App
+메인 컴포넌트  
+인원과 직업정보를 저장  
+자식 컴포넌트로 setting과 game이 존재  
+### Setting
+App으로 부터 인원과 직업정보를 받고 수정하여 다시 부모로 전달 
+### Game  
+App으로 부터 플레이어정보를 전달 받아 게임진행  
 
-### `npm start`
+## 개발일지
+19.03.04
+처음 프로젝트 만들고 구성을 정함  
+app 컴포넌트 개발
+19.03.05
+setting 컴포넌트 개발 시작
+19.03.10
+setting 컴포넌트 개발 완료
+setplayers 기능 개발 시작
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## TODO
+setPlayers.js - 인원,직업정보를 받아 플레이어객체배열 반환  
+게임 시작시 각자 직업 확인하는 화면
+낮투표  
+낮투표 결과 발표 
+낮투표 결과 발표 후 처형 및 재투표 여부  
+낮투표 결과로 처형 후 플레이어 삭제  
+밤투표  
