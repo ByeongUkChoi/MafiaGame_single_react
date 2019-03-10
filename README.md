@@ -16,6 +16,9 @@ cpp로 콘솔게임개발 완료 https://github.com/ChoiBU/MafiaGame_single_cpp
 낮에는 의심가는 사람을 투표하여 처형하고  
 밤에는 각자의 직업대로 행동 할 수 있다  
 
+## 개발환경 
+리액트 16.8.3
+
 ## 구성
 ### App
 메인 컴포넌트  
