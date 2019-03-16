@@ -3,19 +3,32 @@
  * player 배열 생성
  */
 export const setPlayers = (users, jobs) => {
-	const minJobArr = []
-	const maxJobArr = []
-	Object.keys(jobs).forEach((job) =>{
-		Array.from({ length: jobs[job].min }, () => minJobArr.push(job))
-		Array.from({ length: jobs[job].max - jobs[job].min }, () => maxJobArr.push(job))
-	})
+	const jobArr = []
 	const randJobArr = []
-	Array.from({ length: users.length - minJobArr.length }, () => {
-		console.log('b')
-		console.log('a')
-		randJobArr.push()
+	Object.keys(jobs).forEach((job) =>{
+		Array.from({ length: jobs[job].min }, () => jobArr.push(job))
+		Array.from({ length: jobs[job].max - jobs[job].min }, () => randJobArr.push(job))
 	})
+	let randIdx;
+	let randJob;
+	let jobArrLen;
+	console.log(users.length);
+	console.log(jobArr.length);
+	for(let i = 0; i < users.length - jobArr.length; i++){
+		//jobArr.push(randJobArr.splice(Math.floor(Math.random() * randJobArr.length, 1))[0])
+		console.log('aaaa');
+		jobArr.push('c');
+	}
+	//Array.from({ length: users.length - jobArr.length }, async () => {
+	//	console.log(randJobArr.length);
+	//	//randIdx = await Math.floor(Math.random() * randJobArr.length, 1)
+	//	randIdx = async() => Math.floor(Math.random() * randJobArr.length, 1)
+	//	randJob = async(randIdx) => randJobArr.splice(randIdx)[0]
+	//	jobArrLen = async(randJob)=> jobArr.push(randJob)
+	//	console.log(randJobArr.length);
+	//	jobArr.push(randJobArr.splice(Math.floor(Math.random() * randJobArr.length, 1))[0])
+	//})
+	console.log(jobArr);
 
-	//console.log(maxJobArr);
-	return 'a';
+	return ['1','2','3','4','5'];
 }
