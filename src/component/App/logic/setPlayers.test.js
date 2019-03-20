@@ -29,24 +29,24 @@ const jobs = {
 
 describe('App/logic/setPlayers 함수 테스트', () => {
     it('리턴값이 잘 들어오는지!', () => {
-        const players = setPlayers(users, jobs)
+		for(let i=0; i<1000; i++){
+			const players = setPlayers(users, jobs)
+			expect(players).not.toContain(undefined)
 
-        expect(players).toHaveLength(5)
-        // expect(players).toMatchSnapshot()
-       // const jobNameByPlayers = players.map(player => player.jobName)
+			expect(players.filter(job => job === 'MAFIA').length).toBeGreaterThanOrEqual(1)
+			expect(players.filter(job => job === 'MAFIA').length).toBeLessThanOrEqual(1)
 
-       // expect(jobNameByPlayers).toContain(JOB_NAME_OF_CITIZEN)
-       // expect(jobNameByPlayers).toContain(JOB_NAME_OF_DOCTOR)
-       // expect(jobNameByPlayers).toContain(JOB_NAME_OF_MAFIA)
-       // expect(jobNameByPlayers).toContain(JOB_NAME_OF_POLICE)
+			expect(players.filter(job => job === 'POLICE').length).toBeGreaterThanOrEqual(0)
+			expect(players.filter(job => job === 'POLICE').length).toBeLessThanOrEqual(2)
 
-       // const nameByPlayers = players.map(player => player.name)
+			expect(players.filter(job => job === 'DOCTOR').length).toBeGreaterThanOrEqual(0)
+			expect(players.filter(job => job === 'DOCTOR').length).toBeLessThanOrEqual(2)
 
-       // // console.log(nameByPlayers)
-       // people.forEach(person => {
-       //     // console.log(person)
-       //     expect(nameByPlayers).toContain(person)
-       // })
-
+			expect(players.filter(job => job === 'CITIZEN').length).toBeGreaterThanOrEqual(1)
+			expect(players.filter(job => job === 'CITIZEN').length).toBeLessThanOrEqual(2)
+		}
     })
 })
+
+function playersJobCnt (player,jobs) {
+}
