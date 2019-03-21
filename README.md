@@ -39,7 +39,9 @@ setting 컴포넌트 개발 시작
 setting 컴포넌트 개발 완료
 setplayers 기능 개발 시작
 19.03.20
-setPlayer.js 테스트 코드 작성
+setPlayer.js 테스트 코드 작성 중
+19.03.21
+setPlayer.js makeRandJobArr 완성, 테스트 코드 완성
 
 ## TODO
 setPlayers.js - 인원,직업정보를 받아 플레이어객체배열 반환  
