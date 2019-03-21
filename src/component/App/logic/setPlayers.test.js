@@ -1,4 +1,4 @@
-import { setPlayers } from "./setPlayers";
+import { setPlayers, makeRandJobArr } from "./setPlayers";
 
 const users = [
 	'player1',
@@ -27,26 +27,31 @@ const jobs = {
 	}
 }
 
-describe('App/logic/setPlayers 함수 테스트', () => {
-    it('리턴값이 잘 들어오는지!', () => {
-		for(let i=0; i<1000; i++){
-			const players = setPlayers(users, jobs)
-			expect(players).not.toContain(undefined)
+describe('Test :  App/logic/setPlayers.js', () => {
+    it('makeRandJobArr : 100 번 반복 시 랜덤 직업에 undefined 없는지, 최소값 이상 최댓값 이하 인지, 모든 직업이 각 인덱스에 존재하는지', () => {
+		let allUsersJob = []
+		for(let i=0; i<100; i++){
+			const randJobArr = makeRandJobArr(users.length, jobs)
 
-			expect(players.filter(job => job === 'MAFIA').length).toBeGreaterThanOrEqual(1)
-			expect(players.filter(job => job === 'MAFIA').length).toBeLessThanOrEqual(1)
+			expect(randJobArr).not.toContain(undefined)
+			Object.keys(jobs).forEach(jobName => {
+				expect(randJobArr.filter(job => job === jobName).length).toBeLessThanOrEqual(jobs[jobName].max)
+			})
 
-			expect(players.filter(job => job === 'POLICE').length).toBeGreaterThanOrEqual(0)
-			expect(players.filter(job => job === 'POLICE').length).toBeLessThanOrEqual(2)
-
-			expect(players.filter(job => job === 'DOCTOR').length).toBeGreaterThanOrEqual(0)
-			expect(players.filter(job => job === 'DOCTOR').length).toBeLessThanOrEqual(2)
-
-			expect(players.filter(job => job === 'CITIZEN').length).toBeGreaterThanOrEqual(1)
-			expect(players.filter(job => job === 'CITIZEN').length).toBeLessThanOrEqual(2)
+			randJobArr.forEach((job,idx) => {
+				if(allUsersJob[idx]) {
+					if(allUsersJob[idx].indexOf(job) < 0) {
+						allUsersJob[idx].push(job)
+					}
+				}else{
+					allUsersJob[idx] = [job]
+				}
+			})
 		}
+		// 직업이 모든 인덱스에 전부 존재하는지 확인
+		console.table(allUsersJob)
+		Array.from({ length: users.length }, (v, i) => expect(allUsersJob[i].length).toBe(Object.keys(jobs).length))
+    })
+    it('2 번째 ', () => {
     })
 })
-
-function playersJobCnt (player,jobs) {
-}

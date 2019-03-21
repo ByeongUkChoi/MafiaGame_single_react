@@ -49,7 +49,6 @@ class App extends Component {
 				return <Game players={setPlayers(this.state.users, this.state.jobs)} />
 				// state를 넘길경우
 				//return <Game jobs={this.state.jobs}/>;
-				break;
 			default:
 				return (
 					<>
