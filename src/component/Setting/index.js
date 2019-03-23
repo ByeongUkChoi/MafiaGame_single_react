@@ -59,6 +59,10 @@ class Setting extends Component {
 		this.setState({jobs: {...this.state.jobs, ...tmpJob}})
 	}
 
+	// max job cnt > users cnt
+	jobCntCheck = () => {
+	}
+
 	startGame = () => {
 		this.props.setUsersJobs(this.state.users.map((name, idx) => (!name ? "Player"+(idx+1) : name)), this.state.jobs)
 		this.props.setPage('play')
