@@ -41,10 +41,17 @@ class App extends Component {
 	// setting에서 user,jobs 설정
 	setUsersJobs = (users,jobs) => {this.setState({users, jobs})}
 
+	// max job cnt > users cnt
+	jobCntCheck = (users, jobs) => {
+		let maxJobCnt = 0
+		Object.keys(jobs).forEach(job => maxJobCnt += jobs[job].max)
+		return users.length && users.length <= maxJobCnt ? true : false;
+	}
+
 	render() {
 		switch(this.state.page) {
 			case 'setting':
-				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage} setUsersJobs={this.setUsersJobs} />
+				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage} setUsersJobs={this.setUsersJobs} jobCntCheck={this.jobCntCheck} />
 			case 'play':
 				return <Game players={setPlayers(this.state.users, this.state.jobs)} />
 				// state를 넘길경우
@@ -53,7 +60,9 @@ class App extends Component {
 				return (
 					<>
 					<button onClick={() => this.setPage('setting')}>게임설정</button>
+					{this.jobCntCheck(this.state.users, this.state.jobs) &&
 					<button onClick={() => this.setPage('play')}>게임시작</button>
+					}
 					</>
 				)
 		}

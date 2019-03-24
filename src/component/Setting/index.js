@@ -8,8 +8,8 @@ class Setting extends Component {
 		jobs : this.props.jobs
 	}
 	// user추가, 제거. +,- 버튼 클릭
-	addUser = () => {this.setState({users: this.state.users.concat("")})}
-	removeUser = () => {this.setState({ users: this.state.users.slice(0, -1)})}
+	addUser = () => {this.setState({users: this.state.users.concat("")});this.jobCntCheck(this.state.users, this.state.jobs)}
+	removeUser = () => {this.setState({ users: this.state.users.slice(0, -1)});this.jobCntCheck(this.state.users, this.state.jobs)}
 	// 유저 이름 입력 시
 	OnChangeUsers = (idx, name) => {this.setState({users: this.state.users.map((x,i) => idx === i ? name : x)})}
 
@@ -25,6 +25,7 @@ class Setting extends Component {
 			};
 			this.setState({jobs: {...this.state.jobs, ...tmpJob}})
 		}
+		this.jobCntCheck(this.state.users, this.state.jobs)
 	}
 	// min +
 	plusMinJob = (jobType) => {
@@ -35,6 +36,7 @@ class Setting extends Component {
 			max: job.max === job.min ? job.max + 1 : job.max,
 		};
 		this.setState({jobs: {...this.state.jobs, ...tmpJob}})
+		this.jobCntCheck(this.state.users, this.state.jobs)
 	}
 	// max -
 	minusMaxJob = (jobType) => {
@@ -47,6 +49,7 @@ class Setting extends Component {
 			};
 			this.setState({jobs: {...this.state.jobs, ...tmpJob}})
 		}
+		this.jobCntCheck(this.state.users, this.state.jobs)
 	}
 	// max +
 	plusMaxJob = (jobType) => {
@@ -57,11 +60,11 @@ class Setting extends Component {
 			max: job.max + 1
 		};
 		this.setState({jobs: {...this.state.jobs, ...tmpJob}})
+		this.jobCntCheck(this.state.users, this.state.jobs)
 	}
 
 	// max job cnt > users cnt
-	jobCntCheck = () => {
-	}
+	jobCntCheck = this.props.jobCntCheck
 
 	startGame = () => {
 		this.props.setUsersJobs(this.state.users.map((name, idx) => (!name ? "Player"+(idx+1) : name)), this.state.jobs)
@@ -97,7 +100,9 @@ class Setting extends Component {
 			))}
 			<br/><br/>
 			<button onClick={() => this.props.setPage('main')}>뒤로</button>
-			<button onClick={this.startGame}>게임시작</button>
+			{this.jobCntCheck(this.state.users, this.state.jobs) &&
+				<button onClick={() => this.setPage('play')}>게임시작</button>
+			}
 			</>
 		);
 	}
