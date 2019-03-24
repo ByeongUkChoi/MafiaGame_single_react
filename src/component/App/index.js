@@ -54,8 +54,6 @@ class App extends Component {
 				return <Setting users={this.state.users} jobs={this.state.jobs} setPage={this.setPage} setUsersJobs={this.setUsersJobs} jobCntCheck={this.jobCntCheck} />
 			case 'play':
 				return <Game players={setPlayers(this.state.users, this.state.jobs)} />
-				// state를 넘길경우
-				//return <Game jobs={this.state.jobs}/>;
 			default:
 				return (
 					<>
