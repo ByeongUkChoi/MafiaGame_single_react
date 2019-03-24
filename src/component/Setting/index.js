@@ -101,7 +101,7 @@ class Setting extends Component {
 			<br/><br/>
 			<button onClick={() => this.props.setPage('main')}>뒤로</button>
 			{this.jobCntCheck(this.state.users, this.state.jobs) &&
-				<button onClick={() => this.setPage('play')}>게임시작</button>
+				<button onClick={this.startGame}>게임시작</button>
 			}
 			</>
 		);

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import * as jobTypes from '../App/const/JobTypes';
 
 class Game extends Component {
+	state = {
+		players : this.props.players,
+	}
 
 	render() {
 		console.log(this.props.players)
