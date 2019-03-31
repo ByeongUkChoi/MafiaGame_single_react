@@ -4,7 +4,9 @@
  */
 export const setPlayers = (users, jobs) => {
 	const jobArr = makeRandJobArr(users.length, jobs)
-	return jobArr
+	const players = []
+	users.forEach((user,idx) => players.push({user : user, job : jobArr[idx]}))
+	return players
 
 }
 
@@ -20,7 +22,7 @@ export const makeRandJobArr = (userCnt, jobs) => {
 		// randJobArr의 랜덤 원소를 빼서 jobArr에 push
 		jobArr.push(randJobArr.splice(Math.floor(Math.random() * randJobArr.length), 1)[0])
 	)
-	// 랜덤
-	jobArr.sort(() => Math.random() - 0.5)
+	// 랜덤으로 섞기
+	jobArr.sort(() => Math.random() - 0.5).sort(() => Math.random() - 0.1).sort(() => Math.random() - 0.5)
 	return jobArr;
 }

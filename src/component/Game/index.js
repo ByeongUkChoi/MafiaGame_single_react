@@ -3,14 +3,14 @@ import * as jobTypes from '../App/const/JobTypes';
 
 class Game extends Component {
 	state = {
+		date : 1,
 		players : this.props.players,
 	}
 
 	render() {
-		console.log(this.props.players)
 		return (
 			<div>
-			<span>{this.props.players}</span>
+			<span></span>
 			"asdf"
 			</div>
 		)
