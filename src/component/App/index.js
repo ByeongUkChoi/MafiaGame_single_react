@@ -17,11 +17,13 @@ class App extends Component {
 			},
 			POLICE : {
 				min : 0,
-				max : 0,
+				//max : 0,
+				max : 1,	// TEST
 			},
 			DOCTOR : {
 				min : 0,
-				max : 0,
+				//max : 0,
+				max : 1,	// TEST
 			},
 			CITIZEN : {
 				min : 1,
