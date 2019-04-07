@@ -44,6 +44,8 @@ setPlayer.js 테스트 코드 작성 중
 setPlayer.js makeRandJobArr 완성, 테스트 코드 완성
 19.03.24
 setting 1차 완료, game 컴포넌트 시작
+19.04.07
+showEachJob 컴포넌트 개발 시작
 
 ## TODO
 setPlayers.js - 인원,직업정보를 받아 플레이어객체배열 반환  
