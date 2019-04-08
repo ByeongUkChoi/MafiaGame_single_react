@@ -36,7 +36,7 @@ class Game extends Component {
 		let component
 		// First Daytime : 직업공개 시간
 		if(this.state.date === 1 && this.state.dayStatus === TimeStatus.DAYTIME) {
-			component = <ShowEachJob nextStep={this.nextStep}/>
+			component = <ShowEachJob players={this.state.players} nextStep={this.nextStep}/>
 		}else if(this.state.dayStatus === TimeStatus.DAYTIME) {
 			component = <>"DAY"</>
 		}else if(this.state.dayStatus === TimeStatus.NIGHTTIME) {
