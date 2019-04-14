@@ -11,16 +11,27 @@ class ShowEachJob extends Component {
 		this.props.nextStep()
 	}
 
+	showJob = (e) => {
+		console.log(e.target);
+	}
+	nextPlayer = () => {
+	}
+
 	render() {
-		//console.log(this.state.players);
 		return (
 			<>
+			<span>{this.state.players[this.state.idx].user}</span>
+			<br/>
+			<button onClick={this.showJob}>직업 확인</button>
+			<span></span>
+
+			<br/><br/>
 			{this.state.players.map((player, idx) => (
 				<span key={idx}>플레이어 : {player.user}<br/></span>
 			))}
-				<button onClick={this.startGame}>다음날</button>
-				<span></span>
-				"showEachJob"
+			<button onClick={this.startGame}>다음날</button>
+			<span></span>
+			"showEachJob"
 			</>
 		)
 	}

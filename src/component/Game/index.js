@@ -37,13 +37,13 @@ class Game extends Component {
 		// First Daytime : 직업공개 시간
 		if(this.state.date === 1 && this.state.dayStatus === TimeStatus.DAYTIME) {
 			component = <ShowEachJob players={this.state.players} nextStep={this.nextStep}/>
-		}else if(this.state.dayStatus === TimeStatus.DAYTIME) {
-			component = <>"DAY"</>
-		}else if(this.state.dayStatus === TimeStatus.NIGHTTIME) {
-			component = <>"NIGHT"</> 
 		}else{
-			// ERROR
-			console.err("TimeStatus Error - 01");
+			// 게임이 끝났는지 확인
+			if(this.state.dayStatus === TimeStatus.DAYTIME) {
+				component = <>"DAY"</>
+			}else if(this.state.dayStatus === TimeStatus.NIGHTTIME) {
+				component = <>"NIGHT"</> 
+			}
 		}
 		return component
 	}
