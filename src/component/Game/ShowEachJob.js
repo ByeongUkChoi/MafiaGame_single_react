@@ -5,16 +5,22 @@ class ShowEachJob extends Component {
 
 	state = {
 		idx : 0,
-		players : this.props.players
-	}
-	startGame = () => {
-		this.props.nextStep()
+		players : this.props.players,
+		showJob : false,
 	}
 
-	showJob = (e) => {
-		console.log(e.target);
+	clickShowJob = () => {
+		this.setState({ showJob: true });
 	}
-	nextPlayer = () => {
+	next = () => {
+		this.setState({ 
+			showJob: false,
+			idx: this.state.idx + 1
+		});
+	}
+
+	startGame = () => {
+		this.props.nextStep()
 	}
 
 	render() {
@@ -22,16 +28,15 @@ class ShowEachJob extends Component {
 			<>
 			<span>{this.state.players[this.state.idx].user}</span>
 			<br/>
-			<button onClick={this.showJob}>직업 확인</button>
-			<span></span>
-
-			<br/><br/>
-			{this.state.players.map((player, idx) => (
-				<span key={idx}>플레이어 : {player.user}<br/></span>
-			))}
-			<button onClick={this.startGame}>다음날</button>
-			<span></span>
-			"showEachJob"
+			{this.state.showJob ? 
+				<>
+				<span>당신은 {this.state.players[this.state.idx].job} 입니다</span><br/>
+				<span>다음 버튼을 누르고 다음 플레이어에게 전달하세요</span>
+				<button onClick={this.next}>다음</button>
+				</>
+				: 
+				<button onClick={this.clickShowJob}>직업 확인</button>
+			}
 			</>
 		)
 	}
